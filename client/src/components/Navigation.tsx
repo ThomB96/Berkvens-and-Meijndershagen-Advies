@@ -11,6 +11,7 @@ export default function Navigation() {
     { href: "/", label: "Home" },
     { href: "/hypotheekadvies", label: "Hypotheekadvies" },
     { href: "/financieel-advies", label: "Financieel Advies" },
+    { href: "/verzekeringsadvies", label: "Verzekeringsadvies" },
     { href: "/over-ons", label: "Over Ons" },
     { href: "/contact", label: "Contact" },
   ];

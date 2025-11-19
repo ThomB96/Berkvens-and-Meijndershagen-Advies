@@ -1,6 +1,4 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
 export interface ServiceCard {
@@ -11,18 +9,19 @@ export interface ServiceCard {
 
 interface ServiceSliderProps {
   cards: ServiceCard[];
+  autoPlayInterval?: number;
 }
 
-export default function ServiceSlider({ cards }: ServiceSliderProps) {
+export default function ServiceSlider({ cards, autoPlayInterval = 3000 }: ServiceSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % cards.length);
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % cards.length);
+    }, autoPlayInterval);
 
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + cards.length) % cards.length);
-  };
+    return () => clearInterval(interval);
+  }, [cards.length, autoPlayInterval]);
 
   const getCardPosition = (index: number) => {
     const diff = (index - currentIndex + cards.length) % cards.length;
@@ -80,28 +79,6 @@ export default function ServiceSlider({ cards }: ServiceSliderProps) {
               </div>
             );
           })}
-        </div>
-
-        {/* Navigation Buttons */}
-        <div className="absolute left-0 right-0 top-1/2 z-40 flex -translate-y-1/2 justify-between px-2">
-          <Button
-            size="icon"
-            variant="outline"
-            onClick={prevSlide}
-            className="bg-white/90 backdrop-blur-sm hover:bg-white"
-            data-testid="button-slider-prev"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </Button>
-          <Button
-            size="icon"
-            variant="outline"
-            onClick={nextSlide}
-            className="bg-white/90 backdrop-blur-sm hover:bg-white"
-            data-testid="button-slider-next"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </Button>
         </div>
       </div>
 

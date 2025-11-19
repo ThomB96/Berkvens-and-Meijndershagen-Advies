@@ -1,8 +1,10 @@
 import HeroSection from "@/components/HeroSection";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import { Home, TrendingUp, Shield, Users } from "lucide-react";
+import { Home, TrendingUp, Shield, Users, FileText } from "lucide-react";
+import firstHomeImage from "@assets/generated_images/First_home_buyers_celebration_6717e5d7.png";
+import pensionImage from "@assets/generated_images/Happy_retired_couple_3f286504.png";
+import insuranceImage from "@assets/generated_images/Insurance_protection_concept_a316a83e.png";
 
 export default function HomePage() {
   return (
@@ -17,94 +19,106 @@ export default function HomePage() {
               Onze Diensten
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Professioneel advies voor al uw hypotheek- en financiële vraagstukken
+              Professioneel advies voor al uw hypotheek-, financiële en verzekeringsvraagstukken
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2">
+          <div className="grid gap-8 md:grid-cols-3">
             {/* Hypotheekadvies Card */}
-            <Card className="overflow-hidden hover-elevate" data-testid="card-hypotheekadvies">
-              <CardHeader className="bg-primary/5 border-b gap-1">
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-md bg-primary text-primary-foreground">
-                    <Home className="h-6 w-6" />
-                  </div>
-                  <CardTitle className="text-2xl">Hypotheekadvies</CardTitle>
-                </div>
-                <CardDescription className="text-base">
-                  Van eerste huis tot oversluiten
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="pt-6 space-y-4">
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">✓</span>
-                    <span>Eerste huis kopen</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">✓</span>
-                    <span>Volgend huis kopen</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">✓</span>
-                    <span>Verbouwen en overwaarde opnemen</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">✓</span>
-                    <span>Oversluiten en hypotheekscan</span>
-                  </li>
-                </ul>
-                <Link href="/hypotheekadvies">
-                  <a data-testid="link-meer-hypotheek">
-                    <Button className="w-full mt-4">
+            <Link href="/hypotheekadvies">
+              <a data-testid="card-hypotheekadvies">
+                <div className="group relative h-[400px] overflow-hidden rounded-lg hover-elevate active-elevate-2">
+                  <img
+                    src={firstHomeImage}
+                    alt="Hypotheekadvies"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/70 to-primary/30" />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center text-white">
+                    <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
+                      <Home className="h-8 w-8" />
+                    </div>
+                    <h3 className="mb-3 text-2xl font-bold">Hypotheekadvies</h3>
+                    <p className="mb-4 text-sm text-white/90">
+                      Van eerste huis tot oversluiten
+                    </p>
+                    <ul className="space-y-2 text-sm text-white/80">
+                      <li>✓ Eerste huis kopen</li>
+                      <li>✓ Volgend huis kopen</li>
+                      <li>✓ Verbouwen en overwaarde</li>
+                      <li>✓ Oversluiten en scan</li>
+                    </ul>
+                    <Button variant="outline" className="mt-6 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20">
                       Meer informatie
                     </Button>
-                  </a>
-                </Link>
-              </CardContent>
-            </Card>
+                  </div>
+                </div>
+              </a>
+            </Link>
 
             {/* Financieel Advies Card */}
-            <Card className="overflow-hidden hover-elevate" data-testid="card-financieel-advies">
-              <CardHeader className="bg-accent/20 border-b gap-1">
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-md bg-accent text-accent-foreground">
-                    <TrendingUp className="h-6 w-6" />
-                  </div>
-                  <CardTitle className="text-2xl">Financieel Advies</CardTitle>
-                </div>
-                <CardDescription className="text-base">
-                  Plan uw financiële toekomst
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="pt-6 space-y-4">
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <span className="text-accent-foreground mt-0.5">✓</span>
-                    <span>Aanvullend pensioen opbouwen</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-accent-foreground mt-0.5">✓</span>
-                    <span>Eerder stoppen met werken</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-accent-foreground mt-0.5">✓</span>
-                    <span>Sparen voor later</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-accent-foreground mt-0.5">✓</span>
-                    <span>Wijzigingen in uw situatie</span>
-                  </li>
-                </ul>
-                <Link href="/financieel-advies">
-                  <a data-testid="link-meer-financieel">
-                    <Button variant="secondary" className="w-full mt-4">
+            <Link href="/financieel-advies">
+              <a data-testid="card-financieel-advies">
+                <div className="group relative h-[400px] overflow-hidden rounded-lg hover-elevate active-elevate-2">
+                  <img
+                    src={pensionImage}
+                    alt="Financieel Advies"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-accent/95 via-accent/70 to-accent/30" />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center text-accent-foreground">
+                    <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
+                      <TrendingUp className="h-8 w-8" />
+                    </div>
+                    <h3 className="mb-3 text-2xl font-bold">Financieel Advies</h3>
+                    <p className="mb-4 text-sm opacity-90">
+                      Plan uw financiële toekomst
+                    </p>
+                    <ul className="space-y-2 text-sm opacity-80">
+                      <li>✓ Aanvullend pensioen</li>
+                      <li>✓ Eerder stoppen met werken</li>
+                      <li>✓ Sparen voor later</li>
+                      <li>✓ Wijzigingen in situatie</li>
+                    </ul>
+                    <Button variant="outline" className="mt-6 bg-white/10 backdrop-blur-sm border-current/30 hover:bg-white/20">
                       Meer informatie
                     </Button>
-                  </a>
-                </Link>
-              </CardContent>
-            </Card>
+                  </div>
+                </div>
+              </a>
+            </Link>
+
+            {/* Verzekeringsadvies Card */}
+            <Link href="/verzekeringsadvies">
+              <a data-testid="card-verzekeringsadvies">
+                <div className="group relative h-[400px] overflow-hidden rounded-lg hover-elevate active-elevate-2">
+                  <img
+                    src={insuranceImage}
+                    alt="Verzekeringsadvies"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-600/95 via-blue-500/70 to-blue-400/30" />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center text-white">
+                    <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
+                      <Shield className="h-8 w-8" />
+                    </div>
+                    <h3 className="mb-3 text-2xl font-bold">Verzekeringsadvies</h3>
+                    <p className="mb-4 text-sm text-white/90">
+                      Optimale bescherming voor u en uw gezin
+                    </p>
+                    <ul className="space-y-2 text-sm text-white/80">
+                      <li>✓ Overlijdensrisicoverzekering</li>
+                      <li>✓ Arbeidsongeschiktheidsverzekering</li>
+                      <li>✓ Inkomensverzekering</li>
+                      <li>✓ Zorgverzekering</li>
+                    </ul>
+                    <Button variant="outline" className="mt-6 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20">
+                      Meer informatie
+                    </Button>
+                  </div>
+                </div>
+              </a>
+            </Link>
           </div>
         </div>
       </section>

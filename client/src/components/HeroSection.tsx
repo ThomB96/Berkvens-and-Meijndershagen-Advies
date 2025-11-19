@@ -45,6 +45,17 @@ export default function HeroSection() {
               </Button>
             </a>
           </Link>
+          <Link href="/verzekeringsadvies">
+            <a data-testid="link-cta-verzekeringen">
+              <Button
+                size="lg"
+                variant="outline"
+                className="bg-background/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 text-lg px-8"
+              >
+                Verzekeringsadvies
+              </Button>
+            </a>
+          </Link>
         </div>
       </div>
     </section>

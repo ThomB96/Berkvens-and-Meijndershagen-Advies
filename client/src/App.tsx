@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import HomePage from "@/pages/home";
 import HypotheekadviesPage from "@/pages/hypotheekadvies";
 import FinancieelAdviesPage from "@/pages/financieel-advies";
+import VezekeringsadviesPage from "@/pages/verzekeringsadvies";
 import OverOnsPage from "@/pages/over-ons";
 import ContactPage from "@/pages/contact";
 import NotFound from "@/pages/not-found";
@@ -18,6 +19,7 @@ function Router() {
       <Route path="/" component={HomePage} />
       <Route path="/hypotheekadvies" component={HypotheekadviesPage} />
       <Route path="/financieel-advies" component={FinancieelAdviesPage} />
+      <Route path="/verzekeringsadvies" component={VezekeringsadviesPage} />
       <Route path="/over-ons" component={OverOnsPage} />
       <Route path="/contact" component={ContactPage} />
       <Route component={NotFound} />

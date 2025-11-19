@@ -33,6 +33,13 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/verzekeringsadvies">
+                  <a className="text-sm text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-verzekeringen">
+                    Verzekeringsadvies
+                  </a>
+                </Link>
+              </li>
+              <li>
                 <Link href="/over-ons">
                   <a className="text-sm text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-over-ons">
                     Over Ons
