@@ -8,9 +8,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {/* Company Info */}
           <div>
-            <h3 className="mb-4 text-lg font-semibold">Financieel Advies</h3>
+            <h3 className="mb-4 text-lg font-semibold">Berkvens & Meijndershagen advies</h3>
             <p className="text-sm text-muted-foreground">
-              Professioneel hypotheek- en financieel advies voor een zorgeloze toekomst.
+              Wij maken van cijfers kansen. Professioneel hypotheek- en financieel advies voor een zorgeloze toekomst.
             </p>
           </div>
 
@@ -19,38 +19,28 @@ export default function Footer() {
             <h3 className="mb-4 text-lg font-semibold">Snelle Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/hypotheekadvies">
-                  <a className="text-sm text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-hypotheekadvies">
-                    Hypotheekadvies
-                  </a>
+                <Link href="/hypotheekadvies" className="text-sm text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-hypotheekadvies">
+                  Hypotheekadvies
                 </Link>
               </li>
               <li>
-                <Link href="/financieel-advies">
-                  <a className="text-sm text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-financieel">
-                    Financieel Advies
-                  </a>
+                <Link href="/financieel-advies" className="text-sm text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-financieel">
+                  Financieel Advies
                 </Link>
               </li>
               <li>
-                <Link href="/verzekeringsadvies">
-                  <a className="text-sm text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-verzekeringen">
-                    Verzekeringsadvies
-                  </a>
+                <Link href="/verzekeringsadvies" className="text-sm text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-verzekeringen">
+                  Verzekeringsadvies
                 </Link>
               </li>
               <li>
-                <Link href="/over-ons">
-                  <a className="text-sm text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-over-ons">
-                    Over Ons
-                  </a>
+                <Link href="/over-ons" className="text-sm text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-over-ons">
+                  Over Ons
                 </Link>
               </li>
               <li>
-                <Link href="/contact">
-                  <a className="text-sm text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-contact">
-                    Contact
-                  </a>
+                <Link href="/contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-contact">
+                  Contact
                 </Link>
               </li>
             </ul>
@@ -80,7 +70,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Financieel Advies. Alle rechten voorbehouden.</p>
+          <p>&copy; {new Date().getFullYear()} Berkvens & Meijndershagen advies. Alle rechten voorbehouden.</p>
         </div>
       </div>
     </footer>

@@ -1,10 +1,11 @@
 import HeroSection from "@/components/HeroSection";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import { Home, TrendingUp, Shield, Users, FileText } from "lucide-react";
-import firstHomeImage from "@assets/generated_images/First_home_buyers_celebration_6717e5d7.png";
-import pensionImage from "@assets/generated_images/Happy_retired_couple_3f286504.png";
+import { Home, TrendingUp, Shield, Users } from "lucide-react";
+import mortgageIllustration from "@assets/generated_images/mortgage_advice_illustration_concept.png";
+import financialIllustration from "@assets/generated_images/financial_planning_illustration_concept.png";
 import insuranceImage from "@assets/generated_images/Insurance_protection_concept_a316a83e.png";
+import ctaBackground from "@assets/generated_images/cta_handshake_background.png";
 
 export default function HomePage() {
   return (
@@ -25,11 +26,10 @@ export default function HomePage() {
 
           <div className="grid gap-8 md:grid-cols-3">
             {/* Hypotheekadvies Card */}
-            <Link href="/hypotheekadvies">
-              <a data-testid="card-hypotheekadvies">
-                <div className="group relative h-[400px] overflow-hidden rounded-lg hover-elevate active-elevate-2">
+            <Link href="/hypotheekadvies" data-testid="card-hypotheekadvies">
+              <div className="group relative h-[400px] overflow-hidden rounded-lg hover-elevate active-elevate-2">
                   <img
-                    src={firstHomeImage}
+                    src={mortgageIllustration}
                     alt="Hypotheekadvies"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
@@ -53,15 +53,13 @@ export default function HomePage() {
                     </Button>
                   </div>
                 </div>
-              </a>
             </Link>
 
             {/* Financieel Advies Card */}
-            <Link href="/financieel-advies">
-              <a data-testid="card-financieel-advies">
-                <div className="group relative h-[400px] overflow-hidden rounded-lg hover-elevate active-elevate-2">
+            <Link href="/financieel-advies" data-testid="card-financieel-advies">
+              <div className="group relative h-[400px] overflow-hidden rounded-lg hover-elevate active-elevate-2">
                   <img
-                    src={pensionImage}
+                    src={financialIllustration}
                     alt="Financieel Advies"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
@@ -85,13 +83,11 @@ export default function HomePage() {
                     </Button>
                   </div>
                 </div>
-              </a>
             </Link>
 
             {/* Verzekeringsadvies Card */}
-            <Link href="/verzekeringsadvies">
-              <a data-testid="card-verzekeringsadvies">
-                <div className="group relative h-[400px] overflow-hidden rounded-lg hover-elevate active-elevate-2">
+            <Link href="/verzekeringsadvies" data-testid="card-verzekeringsadvies">
+              <div className="group relative h-[400px] overflow-hidden rounded-lg hover-elevate active-elevate-2">
                   <img
                     src={insuranceImage}
                     alt="Verzekeringsadvies"
@@ -117,7 +113,6 @@ export default function HomePage() {
                     </Button>
                   </div>
                 </div>
-              </a>
             </Link>
           </div>
         </div>
@@ -171,18 +166,24 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold mb-4">Klaar om te starten?</h2>
-          <p className="text-lg text-muted-foreground mb-8">
+      <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src={ctaBackground}
+            alt="Contact background"
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-primary/75" />
+        </div>
+        <div className="relative mx-auto max-w-3xl text-center">
+          <h2 className="text-4xl font-bold mb-4 text-white">Klaar om te starten?</h2>
+          <p className="text-xl text-white/90 mb-8">
             Neem vrijblijvend contact met ons op voor een persoonlijk gesprek
           </p>
-          <Link href="/contact">
-            <a data-testid="link-cta-contact">
-              <Button size="lg" className="text-lg px-8">
-                Neem Contact Op
-              </Button>
-            </a>
+          <Link href="/contact" data-testid="link-cta-contact">
+            <Button size="lg" className="text-lg px-8 bg-white text-primary hover:bg-white/90">
+              Neem Contact Op
+            </Button>
           </Link>
         </div>
       </section>
