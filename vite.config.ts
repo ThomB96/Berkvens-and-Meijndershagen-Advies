@@ -5,7 +5,7 @@ import path from "path";
 export default defineConfig({
   // BELANGRIJK: Vervang 'jouw-repo-naam' door de naam van je GitHub repository
   // Voorbeeld: als je repo 'mijn-website' heet, wordt dit: base: '/mijn-website/',
-  base: '/ThomB96/Berkvens-and-Meijndershagen-Advies/', 
+  base: '/Berkvens-and-Meijndershagen-Advies/', 
   
   plugins: [react()],
   resolve: {
