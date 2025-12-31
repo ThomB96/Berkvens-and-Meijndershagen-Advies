@@ -39,12 +39,12 @@ export default function Navigation() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <nav className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center hover-elevate rounded-md" data-testid="link-home-logo">
           <img 
             src={logoImg} 
             alt="Berkvens & Meijndershagen Advies" 
-            className="h-10 w-auto object-contain"
+            className="h-14 sm:h-16 w-auto object-contain"
           />
         </Link>
 
