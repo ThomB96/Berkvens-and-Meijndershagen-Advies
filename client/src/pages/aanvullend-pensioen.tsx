@@ -42,7 +42,7 @@ export default function AanvullendPensioenPage() {
               <Link href="/contact">
                 <Button size="lg" variant="secondary" className="text-lg px-8 shadow-lg" data-testid="button-cta-hero">
                   <Phone className="w-5 h-5 mr-2" />
-                  Gratis Adviesgesprek
+                  Plan Adviesgesprek
                 </Button>
               </Link>
               <Button 
@@ -177,7 +177,7 @@ export default function AanvullendPensioenPage() {
               </p>
               <ul className="space-y-3 mb-8">
                 {[
-                  "Gratis pensioenscan",
+                  "Persoonlijke pensioenscan",
                   "Inzicht in uw pensioengat",
                   "Vergelijking van alle opties",
                   "Advies op maat"
@@ -309,7 +309,7 @@ export default function AanvullendPensioenPage() {
             Klaar om uw pensioen te verbeteren?
           </h2>
           <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-            Maak een afspraak voor een gratis pensioenscan. 
+            Maak een afspraak voor een persoonlijke pensioenscan. 
             Wij laten zien waar u staat en wat de mogelijkheden zijn.
           </p>
           <Link href="/contact">

@@ -42,7 +42,7 @@ export default function WijzigingenSituatiePage() {
               <Link href="/contact">
                 <Button size="lg" variant="secondary" className="text-lg px-8 shadow-lg" data-testid="button-cta-hero">
                   <Phone className="w-5 h-5 mr-2" />
-                  Gratis Adviesgesprek
+                  Plan Adviesgesprek
                 </Button>
               </Link>
               <Button 

@@ -42,7 +42,7 @@ export default function EerderStoppenPage() {
               <Link href="/contact">
                 <Button size="lg" variant="secondary" className="text-lg px-8 shadow-lg" data-testid="button-cta-hero">
                   <Phone className="w-5 h-5 mr-2" />
-                  Gratis Berekening
+                  Plan een Berekening
                 </Button>
               </Link>
               <Button 
@@ -310,7 +310,7 @@ export default function EerderStoppenPage() {
             Benieuwd of u eerder kunt stoppen?
           </h2>
           <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-            Maak een afspraak voor een gratis verkennend gesprek. 
+            Maak een afspraak voor een verkennend gesprek. 
             Wij laten zien wat de mogelijkheden zijn.
           </p>
           <Link href="/contact">
