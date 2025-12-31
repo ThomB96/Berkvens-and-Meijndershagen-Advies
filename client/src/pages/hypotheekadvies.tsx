@@ -1,219 +1,264 @@
-import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
-import { cn } from "@/lib/utils";
-import ServiceTileModal, { type ServiceTileData } from "@/components/ServiceTileModal";
-import firstHomeImage from "@assets/generated_images/First_home_buyers_celebration_6717e5d7.png";
-import nextHomeImage from "@assets/generated_images/Family_upgrading_to_bigger_home_7743af46.png";
-import renovationImage from "@assets/generated_images/Home_renovation_inspiration_08181638.png";
-import financialPlanImage from "@assets/generated_images/Financial_planning_concept_aafca629.png";
-import handshakeImage from "@assets/generated_images/Professional_business_handshake_f5099191.png";
-import consultationImage from "@assets/generated_images/Financial_advisor_consultation_b625ef50.png";
-import heroBackground from "@assets/generated_images/mortgage_advice_hero_background.png";
-import ctaBackground from "@assets/generated_images/cta_consultation_background.png";
-
-const hypotheekTiles: ServiceTileData[] = [
-  {
-    title: "Eerste huis kopen",
-    description: "Maak uw droom waar met de juiste hypotheek voor uw eerste eigen huis.",
-    image: firstHomeImage,
-    detailedInfo: "Het kopen van uw eerste huis is een spannende stap. Wij begeleiden u door het hele proces, van het bepalen van uw budget tot het afsluiten van uw hypotheek. We zorgen ervoor dat u de beste voorwaarden krijgt en dat alles juridisch en financieel op orde is. Onze adviseurs nemen alle tijd om uw situatie te analyseren en de juiste hypotheekvorm voor u te vinden.",
-  },
-  {
-    title: "Volgend huis kopen",
-    description: "Doorgroeien naar een grotere woning met optimale financiering.",
-    image: nextHomeImage,
-    detailedInfo: "Bij de aankoop van uw volgende woning komen extra aspecten kijken, zoals de verkoop van uw huidige huis en het afstemmen van beide transacties. Wij adviseren u over de mogelijkheden van meefinanciering, restschuld en het optimaal benutten van uw overwaarde. Samen zorgen we voor een soepele overgang naar uw nieuwe woning.",
-  },
-  {
-    title: "Verbouwen",
-    description: "Realiseer uw verbouwplannen met een passende hypotheek.",
-    image: renovationImage,
-    detailedInfo: "Wilt u uw huidige woning verbouwen of verduurzamen? Wij helpen u bij het opnemen van extra geld in uw hypotheek voor verbouwingen. We bespreken de mogelijkheden, voorwaarden en taxatievereisten. Ook adviseren we over subsidiemogelijkheden en energiebesparende maatregelen die uw woning waardevermeerdering opleveren.",
-  },
-  {
-    title: "Overwaarde opnemen",
-    description: "Benut de overwaarde van uw woning voor andere doeleinden.",
-    image: financialPlanImage,
-    detailedInfo: "De waarde van uw woning is gestegen en u wilt de overwaarde benutten? Wij adviseren u over de mogelijkheden om overwaarde op te nemen voor bijvoorbeeld verbouwing, aflossing van andere schulden, of andere investeringen. We berekenen wat fiscaal voordelig is en welke hypotheekvorm het beste bij uw plannen past.",
-  },
-  {
-    title: "Oversluiten",
-    description: "Profiteer van lagere rentetarieven door over te sluiten.",
-    image: handshakeImage,
-    detailedInfo: "Is uw rentevaste periode bijna afgelopen of wilt u profiteren van lagere rentes? Oversluiten kan financieel aantrekkelijk zijn. Wij berekenen voor u of oversluiten voordelig is, rekening houdend met boeterentes en afsluitkosten. We vergelijken alle aanbieders en regelen het volledige overstuitproces voor u.",
-  },
-  {
-    title: "Hypotheekscan",
-    description: "Laat uw huidige hypotheek scannen op verbetermogelijkheden.",
-    image: consultationImage,
-    detailedInfo: "Met een hypotheekscan controleren we of uw huidige hypotheek nog optimaal is. We bekijken uw rentepercentage, hypotheekvorm, fiscale aftrek en verzekeringen. Ook adviseren we over mogelijkheden voor rentevastperiode-aanpassing, extra aflossen of andere optimalisaties. Een scan is geheel vrijblijvend en kan u veel geld besparen.",
-  },
-];
+import { Home, Shield, Clock, Phone, ArrowRight, CheckCircle, Building, RefreshCw, Wrench, Users, Briefcase } from "lucide-react";
+import { useState } from "react";
+import familyMovingImg from "@assets/stock_images/family_moving_into_n_641922e7.jpg";
+import youngCoupleImg from "@assets/stock_images/young_couple_looking_2c8128d6.jpg";
+import dutchHouseImg from "@assets/stock_images/beautiful_dutch_hous_6403bfd0.jpg";
+import renovationImg from "@assets/stock_images/home_renovation_kitc_a935dc27.jpg";
+import coupleDocsImg from "@assets/stock_images/couple_reviewing_doc_48aad1b1.jpg";
+import entrepreneurImg from "@assets/stock_images/entrepreneur_busines_2b5164aa.jpg";
 
 export default function HypotheekadviesPage() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % hypotheekTiles.length);
-    }, 3000);
+  const diensten = [
+    {
+      icon: Home,
+      title: "Eerste huis kopen",
+      description: "Start uw woondroom met deskundig advies voor starters op de woningmarkt.",
+      href: "/hypotheekadvies/eerste-huis-kopen",
+      image: youngCoupleImg,
+    },
+    {
+      icon: Building,
+      title: "Volgend huis kopen",
+      description: "Doorstromen naar uw volgende woning? Wij berekenen uw mogelijkheden.",
+      href: "/hypotheekadvies/volgend-huis-kopen",
+      image: familyMovingImg,
+    },
+    {
+      icon: RefreshCw,
+      title: "Hypotheek oversluiten",
+      description: "Bespaar op uw hypotheek door over te sluiten naar een lagere rente.",
+      href: "/hypotheekadvies/hypotheek-oversluiten",
+      image: dutchHouseImg,
+    },
+    {
+      icon: Wrench,
+      title: "Verbouwen",
+      description: "Financier uw verbouwplannen slim met extra hypotheek of overwaarde.",
+      href: "/hypotheekadvies/verbouwen",
+      image: renovationImg,
+    },
+    {
+      icon: Users,
+      title: "Scheiden",
+      description: "Begeleiding bij de financiële afwikkeling van uw woning bij scheiding.",
+      href: "/hypotheekadvies/scheiden",
+      image: coupleDocsImg,
+    },
+    {
+      icon: Briefcase,
+      title: "Ondernemers",
+      description: "Hypotheekadvies speciaal voor zzp'ers, freelancers en ondernemers.",
+      href: "/hypotheekadvies/ondernemers",
+      image: entrepreneurImg,
+    },
+  ];
 
-    return () => clearInterval(interval);
-  }, []);
-
-  const getCardPosition = (index: number) => {
-    const diff = (index - currentIndex + hypotheekTiles.length) % hypotheekTiles.length;
-    
-    if (diff === 0) return "center";
-    if (diff === 1 || diff === -hypotheekTiles.length + 1) return "right";
-    if (diff === hypotheekTiles.length - 1 || diff === -1) return "left";
-    if (diff === 2 || diff === -hypotheekTiles.length + 2) return "far-right";
-    return "far-left";
-  };
+  const faqs = [
+    {
+      q: "Hoeveel hypotheek kan ik krijgen?",
+      a: "Dit hangt af van uw inkomen, schulden en de waarde van de woning. In een gratis gesprek berekenen we exact wat voor u mogelijk is."
+    },
+    {
+      q: "Is het eerste gesprek echt gratis?",
+      a: "Ja, het kennismakingsgesprek is volledig gratis en vrijblijvend. We bespreken uw situatie en mogelijkheden zonder enige verplichting."
+    },
+    {
+      q: "Met welke geldverstrekkers werken jullie?",
+      a: "Wij zijn onafhankelijk en werken samen met alle grote hypotheekverstrekkers. Zo krijgt u altijd de beste voorwaarden."
+    },
+    {
+      q: "Hoe lang duurt het hypotheektraject?",
+      a: "Gemiddeld 4-8 weken, afhankelijk van uw situatie en de geldverstrekker. Wij zorgen dat alles zo snel mogelijk verloopt."
+    },
+  ];
 
   return (
-    <div className="min-h-screen">
-      {/* Page Hero */}
-      <section className="relative h-[45vh] min-h-[350px] w-full overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src={heroBackground}
-            alt="Hypotheekadvies"
-            className="h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/75 to-primary/60" />
-        </div>
-        <div className="relative mx-auto flex h-full max-w-7xl flex-col items-center justify-center px-4 text-center">
-          <h1 className="mb-4 text-4xl font-bold sm:text-5xl text-white" data-testid="text-page-title">
-            Hypotheekadvies
-          </h1>
-          <p className="max-w-2xl text-lg text-white/90" data-testid="text-page-subtitle">
-            Van eerste huis tot oversluiten - wij begeleiden u bij elke stap van uw hypotheektraject
-          </p>
+    <div className="min-h-screen bg-gradient-to-b from-background to-primary/5">
+      <title>Hypotheekadvies | Gratis Advies voor Uw Woonsituatie</title>
+      <meta name="description" content="Gratis hypotheekadvies voor eerste huis, doorstromen, oversluiten en meer. Onafhankelijk advies met volledige begeleiding. Plan nu een gratis gesprek!" />
+
+      {/* Hero Section */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/70 z-10" />
+        <img 
+          src={youngCoupleImg} 
+          alt="Jong stel bekijkt hun nieuwe huis" 
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="relative z-20 py-20 md:py-28 px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl text-center text-white">
+            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-6">
+              <Home className="w-4 h-4" />
+              Gratis Hypotheekadvies
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" data-testid="text-page-h1">
+              Hypotheekadvies<br />
+              Voor Elke Situatie
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto mb-8">
+              Van uw eerste huis tot oversluiten - wij begeleiden u 
+              bij elke stap van uw hypotheektraject. Gratis en vrijblijvend.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/contact">
+                <Button size="lg" variant="secondary" className="text-lg px-8 shadow-lg" data-testid="button-cta-hero">
+                  <Phone className="w-5 h-5 mr-2" />
+                  Gratis Kennismaken
+                </Button>
+              </Link>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="text-lg px-8 bg-white/10 border-white/30 text-white hover:bg-white/20" 
+                onClick={() => document.getElementById('diensten')?.scrollIntoView({ behavior: 'smooth' })}
+                data-testid="button-scroll-diensten"
+              >
+                Bekijk diensten
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Slider Section */}
-      <section className="py-12">
-        <div className="mx-auto max-w-7xl px-4 mb-8">
-          <h2 className="text-center text-2xl font-semibold mb-2">Hoe kunnen wij u helpen?</h2>
-          <p className="text-center text-muted-foreground">
-            Klik op een tegel voor meer informatie en persoonlijk advies
-          </p>
-        </div>
-        
-        <div className="relative w-full">
-          <div className="relative mx-auto max-w-7xl overflow-hidden px-4 py-12">
-            <div className="relative flex items-center justify-center gap-4" style={{ minHeight: "400px" }}>
-              {hypotheekTiles.map((tile, index) => {
-                const position = getCardPosition(index);
-                const isVisible = ["left", "center", "right"].includes(position);
-                
-                return (
-                  <div
-                    key={index}
-                    className={cn(
-                      "absolute w-full max-w-sm transition-all duration-500 ease-in-out",
-                      {
-                        "opacity-100 scale-100 z-30 translate-x-0": position === "center",
-                        "opacity-50 scale-95 z-20 -translate-x-[110%]": position === "left",
-                        "opacity-50 scale-95 z-20 translate-x-[110%]": position === "right",
-                        "opacity-0 scale-90 -translate-x-[220%]": position === "far-left",
-                        "opacity-0 scale-90 translate-x-[220%]": position === "far-right",
-                      }
-                    )}
-                    style={{
-                      visibility: isVisible ? "visible" : "hidden",
-                    }}
-                  >
-                    <ServiceTileModal tile={tile} index={index} />
-                  </div>
-                );
-              })}
+      {/* Trust Bar */}
+      <section className="py-8 px-4 sm:px-6 lg:px-8 bg-white dark:bg-card border-b">
+        <div className="mx-auto max-w-4xl">
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+            <div className="flex items-center gap-2 text-muted-foreground">
+              <Shield className="w-5 h-5 text-primary" />
+              <span className="text-sm font-medium">AFM Gecertificeerd</span>
+            </div>
+            <div className="flex items-center gap-2 text-muted-foreground">
+              <Clock className="w-5 h-5 text-primary" />
+              <span className="text-sm font-medium">Reactie binnen 24 uur</span>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Dot Indicators */}
-          <div className="flex justify-center gap-2 pb-6">
-            {hypotheekTiles.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={cn(
-                  "h-2 rounded-full transition-all",
-                  currentIndex === index
-                    ? "w-8 bg-primary"
-                    : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                )}
-                data-testid={`button-dot-${index}`}
-              />
+      {/* Services Grid */}
+      <section id="diensten" className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium mb-4">
+              <Home className="w-4 h-4" />
+              Onze Diensten
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Hoe kunnen wij u helpen?
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Kies de dienst die bij uw situatie past. Alle hypotheekadvies is gratis en vrijblijvend.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {diensten.map((dienst, idx) => (
+              <Link key={idx} href={dienst.href}>
+                <Card className="group h-full overflow-hidden hover-elevate active-elevate-2 cursor-pointer border-0 shadow-lg" data-testid={`card-dienst-${idx}`}>
+                  <div className="relative h-48 overflow-hidden">
+                    <img 
+                      src={dienst.image} 
+                      alt={dienst.title} 
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute bottom-4 left-4">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/20 backdrop-blur-sm text-white">
+                        <dienst.icon className="h-5 w-5" />
+                      </div>
+                    </div>
+                  </div>
+                  <CardContent className="p-6">
+                    <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
+                      {dienst.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground mb-4">
+                      {dienst.description}
+                    </p>
+                    <div className="flex items-center text-primary text-sm font-medium">
+                      Meer informatie
+                      <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="bg-muted/30 py-16 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl">
-          <h2 className="text-3xl font-bold text-center mb-12">Voordelen van ons hypotheekadvies</h2>
-          
-          <div className="grid gap-6 md:grid-cols-2">
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary font-semibold">
-                  1
-                </div>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-2">Onafhankelijk advies</h3>
-                <p className="text-sm text-muted-foreground">
-                  Wij werken met alle aanbieders en kiezen altijd de beste optie voor u
-                </p>
-              </div>
-            </div>
+      {/* Benefits - Numbered Cards */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-accent/5">
+        <div className="mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Voordelen van ons hypotheekadvies
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Wij maken het verschil met persoonlijke aandacht en deskundige begeleiding.
+            </p>
+          </div>
 
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary font-semibold">
-                  2
-                </div>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-2">Volledige begeleiding</h3>
-                <p className="text-sm text-muted-foreground">
-                  Van oriëntatie tot offerte en ondertekening - wij regelen alles voor u
-                </p>
-              </div>
-            </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {[
+              { num: "01", title: "Onafhankelijk Advies", description: "Wij vergelijken alle aanbieders en kiezen de beste optie voor uw situatie", color: "bg-primary" },
+              { num: "02", title: "Volledige Begeleiding", description: "Van oriëntatie tot offerte en ondertekening - wij regelen alles", color: "bg-accent" },
+              { num: "03", title: "Scherpe Voorwaarden", description: "Door onze ervaring onderhandelen wij de beste condities voor u", color: "bg-primary" },
+              { num: "04", title: "Nazorg Gegarandeerd", description: "Ook na het afsluiten blijven wij uw aanspreekpunt voor vragen", color: "bg-accent" },
+            ].map((item, idx) => (
+              <Card key={idx} className="relative overflow-hidden border-0 shadow-lg">
+                <div className={`absolute top-0 left-0 w-2 h-full ${item.color}`} />
+                <CardContent className="p-6">
+                  <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${item.color} text-white font-bold text-lg mb-4`}>
+                    {item.num}
+                  </div>
+                  <h3 className="text-lg font-bold mb-2">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground">{item.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary font-semibold">
-                  3
-                </div>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-2">Scherpe voorwaarden</h3>
-                <p className="text-sm text-muted-foreground">
-                  Door onze kennis en ervaring onderhandelen wij de beste condities
-                </p>
-              </div>
-            </div>
+      {/* FAQ Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Veelgestelde vragen
+            </h2>
+          </div>
 
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary font-semibold">
-                  4
-                </div>
+          <div className="space-y-4">
+            {faqs.map((faq, idx) => (
+              <div 
+                key={idx}
+                className="border rounded-lg overflow-hidden bg-card"
+              >
+                <button
+                  className="w-full p-6 text-left flex items-center justify-between hover-elevate"
+                  onClick={() => setExpandedFaq(expandedFaq === idx ? null : idx)}
+                  data-testid={`button-faq-${idx}`}
+                >
+                  <span className="font-semibold">{faq.q}</span>
+                  <ArrowRight className={`w-5 h-5 text-primary transition-transform ${expandedFaq === idx ? 'rotate-90' : ''}`} />
+                </button>
+                {expandedFaq === idx && (
+                  <div className="px-6 pb-6 text-muted-foreground">
+                    {faq.a}
+                  </div>
+                )}
               </div>
-              <div>
-                <h3 className="font-semibold mb-2">Nazorg gegarandeerd</h3>
-                <p className="text-sm text-muted-foreground">
-                  Ook na het afsluiten blijven wij uw aanspreekpunt voor vragen
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -222,20 +267,24 @@ export default function HypotheekadviesPage() {
       <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src={ctaBackground}
-            alt="Contact background"
+            src={dutchHouseImg}
+            alt="Mooi Nederlands huis"
             className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-primary/75" />
         </div>
-        <div className="relative mx-auto max-w-3xl text-center">
-          <h2 className="text-4xl font-bold mb-4 text-white">Vrijblijvend kennismaken?</h2>
-          <p className="text-xl text-white/90 mb-8">
-            Neem contact met ons op voor een persoonlijk adviesgesprek
+        <div className="relative mx-auto max-w-3xl text-center text-white">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Klaar om te starten?
+          </h2>
+          <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
+            Maak een afspraak voor een gratis kennismakingsgesprek. 
+            Wij berekenen uw mogelijkheden en begeleiden u van A tot Z.
           </p>
-          <Link href="/contact" data-testid="link-cta-contact">
-            <Button size="lg" className="text-lg px-8 bg-white text-primary hover:bg-white/90">
-              Plan een Afspraak
+          <Link href="/contact">
+            <Button size="lg" variant="secondary" className="text-lg px-8" data-testid="button-cta-bottom">
+              <Phone className="w-5 h-5 mr-2" />
+              Plan een Gratis Gesprek
             </Button>
           </Link>
         </div>

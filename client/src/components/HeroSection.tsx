@@ -1,55 +1,56 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import heroImage from "@assets/generated_images/Homepage_hero_office_interior_b763b0e0.png";
+import { Phone, ArrowRight, Home, TrendingUp } from "lucide-react";
+import heroImage from "@assets/stock_images/young_couple_looking_b43b7836.jpg";
 
 export default function HeroSection() {
   return (
-    <section className="relative h-[75vh] min-h-[500px] w-full overflow-hidden">
-      {/* Background Image with Dark Overlay */}
+    <section className="relative min-h-[80vh] w-full overflow-hidden">
       <div className="absolute inset-0">
         <img
           src={heroImage}
-          alt="Professional office interior"
+          alt="Gelukkig stel kijkt naar hun nieuwe huis"
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/70" />
       </div>
 
-      {/* Content */}
-      <div className="relative mx-auto flex h-full max-w-3xl flex-col items-center justify-center px-4 text-center">
-        <h1 className="mb-6 text-4xl font-bold text-white sm:text-5xl lg:text-6xl" data-testid="text-hero-title">
-          Wij maken van cijfers kansen
+      <div className="relative z-10 mx-auto flex h-full min-h-[80vh] max-w-4xl flex-col items-center justify-center px-4 py-20 text-center">
+        <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-6 text-white">
+          <Home className="w-4 h-4" />
+          Hypotheek & Financieel Advies
+        </div>
+        
+        <h1 className="mb-6 text-4xl font-bold text-white sm:text-5xl lg:text-6xl leading-tight" data-testid="text-hero-title">
+          Wij maken van<br />cijfers kansen
         </h1>
-        <p className="mb-8 text-lg text-white/90 sm:text-xl" data-testid="text-hero-subtitle">
-          Berkvens & Meijndershagen advies - Professioneel hypotheek- en financieel advies op maat. Wij helpen u bij alle belangrijke financiële beslissingen.
+        
+        <p className="mb-8 text-xl text-white/90 max-w-2xl" data-testid="text-hero-subtitle">
+          Berkvens & Meijndershagen Advies helpt u bij alle belangrijke financiële 
+          beslissingen. Van uw eerste hypotheek tot een zorgeloos pensioen.
         </p>
-        <div className="flex flex-col gap-4 sm:flex-row sm:gap-6">
-          <Link href="/hypotheekadvies" data-testid="link-cta-hypotheek">
+        
+        <div className="flex flex-col gap-4 sm:flex-row">
+          <Link href="/contact" data-testid="link-cta-contact-hero">
             <Button
               size="lg"
-              className="bg-primary/90 backdrop-blur-sm border border-primary-border hover:bg-primary text-lg px-8"
+              variant="secondary"
+              className="text-lg px-8 shadow-lg"
             >
-              Hypotheekadvies
+              <Phone className="w-5 h-5 mr-2" />
+              Gratis Kennismaken
             </Button>
           </Link>
-          <Link href="/financieel-advies" data-testid="link-cta-financieel">
-            <Button
-              size="lg"
-              variant="outline"
-              className="bg-background/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 text-lg px-8"
-            >
-              Financieel Advies
-            </Button>
-          </Link>
-          <Link href="/verzekeringsadvies" data-testid="link-cta-verzekeringen">
-            <Button
-              size="lg"
-              variant="outline"
-              className="bg-background/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 text-lg px-8"
-            >
-              Verzekeringsadvies
-            </Button>
-          </Link>
+          <Button
+            size="lg"
+            variant="outline"
+            className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 text-lg px-8"
+            onClick={() => document.getElementById('diensten')?.scrollIntoView({ behavior: 'smooth' })}
+            data-testid="button-scroll-diensten"
+          >
+            Onze diensten
+            <ArrowRight className="w-5 h-5 ml-2" />
+          </Button>
         </div>
       </div>
     </section>
