@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Phone, ArrowRight, Home, TrendingUp } from "lucide-react";
-import heroImage from "@assets/stock_images/young_couple_looking_b43b7836.jpg";
+import heroImage from "@assets/background-BMadvies_1767198525880.png";
 
 export default function HeroSection() {
   return (
@@ -9,10 +9,10 @@ export default function HeroSection() {
       <div className="absolute inset-0">
         <img
           src={heroImage}
-          alt="Gelukkig stel kijkt naar hun nieuwe huis"
-          className="h-full w-full object-cover"
+          alt="Berkvens & Meijndershagen - Uw adviseurs"
+          className="h-full w-full object-cover object-top"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/85 via-primary/70 to-primary/50" />
       </div>
 
       <div className="relative z-10 mx-auto flex h-full min-h-[80vh] max-w-4xl flex-col items-center justify-center px-4 py-20 text-center">
