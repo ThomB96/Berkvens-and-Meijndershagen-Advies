@@ -56,15 +56,9 @@ export default function HypotheekOndernemersPage() {
       <section className="py-8 px-4 sm:px-6 lg:px-8 bg-white dark:bg-card border-b">
         <div className="mx-auto max-w-4xl">
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-            <div className="flex items-center gap-2">
-              <div className="flex text-yellow-400">
-                {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-current" />)}
-              </div>
-              <span className="font-bold text-lg">9.4</span>
-            </div>
             <div className="flex items-center gap-2 text-muted-foreground">
               <Briefcase className="w-5 h-5 text-primary" />
-              <span className="text-sm">200+ ondernemers geholpen</span>
+              <span className="text-sm">Specialist in ondernemers</span>
             </div>
             <div className="flex items-center gap-2 text-muted-foreground">
               <Shield className="w-5 h-5 text-primary" />
