@@ -4,13 +4,14 @@
 
 This is a Dutch-language website for a mortgage and financial advisory company ("Hypotheek & Financieel Adviesbedrijf"). The application provides information about mortgage services, financial planning, and insurance advice for Dutch consumers. Key features include:
 
-- Service pages for different mortgage scenarios (first home, next home, refinancing, renovation, divorce, entrepreneurs)
-- Financial planning advice (pension, early retirement, savings)
+- **Hypotheekadvies** (6 subpages): eerste huis kopen, volgend huis kopen, hypotheek oversluiten, verbouwen, scheiden, ondernemers
+- **Financieel Advies** (6 subpages): aanvullend pensioen, eerder stoppen met werken, sparen voor later, mee-/tegenvaller, wijzigingen in situatie, overlijden
 - Insurance advisory services
 - Contact forms and company information
 - Interactive service sliders and modal components
+- Navigation with dropdown submenus for both advice categories
 
-The site targets Dutch homebuyers and individuals seeking financial guidance, with SEO-optimized content in Dutch.
+The site targets Dutch homebuyers and individuals seeking financial guidance, with SEO-optimized content in Dutch. Tagline: "Wij maken van cijfers kansen".
 
 ## User Preferences
 
