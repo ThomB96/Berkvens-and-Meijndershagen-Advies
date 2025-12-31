@@ -2,7 +2,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useState } from "react";
-import logoImg from "@assets/logo1_1767199170855.png";
+import logoImg from "@assets/logo2_1767199374125.png";
 
 export default function Navigation() {
   const [location] = useLocation();
@@ -39,12 +39,12 @@ export default function Navigation() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center hover-elevate rounded-md" data-testid="link-home-logo">
+      <nav className="mx-auto flex h-28 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link href="/" className="flex items-center hover-elevate rounded-md py-2" data-testid="link-home-logo">
           <img 
             src={logoImg} 
             alt="Berkvens & Meijndershagen Advies" 
-            className="h-14 sm:h-16 w-auto object-contain"
+            className="h-24 w-auto object-contain"
           />
         </Link>
 
