@@ -3,11 +3,9 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 
 export default defineConfig({
-  // BELANGRIJK: Vervang 'jouw-repo-naam' door de naam van je GitHub repository
-  // Voorbeeld: als je repo 'mijn-website' heet, wordt dit: base: '/mijn-website/',
   base: '/Berkvens-and-Meijndershagen-Advies/', 
-  
   plugins: [react()],
+  root: path.resolve(__dirname, "client"), // Zoekt index.html in de client map
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "client/src"),
@@ -15,11 +13,8 @@ export default defineConfig({
       "@assets": path.resolve(__dirname, "attached_assets"),
     },
   },
-  root: path.resolve(__dirname, "client"),
   build: {
-    // We veranderen dit naar 'dist' zodat GitHub Pages het makkelijk vindt
-    outDir: path.resolve(__dirname, "../dist"),
+    outDir: path.resolve(__dirname, "client/dist"), // Maakt dist IN de client map
     emptyOutDir: true,
   },
 });
-
