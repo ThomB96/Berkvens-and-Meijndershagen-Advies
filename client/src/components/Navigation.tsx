@@ -1,19 +1,29 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 export default function Navigation() {
   const [location] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [hypotheekSubmenuOpen, setHypotheekSubmenuOpen] = useState(false);
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/hypotheekadvies", label: "Hypotheekadvies" },
+    { href: "/hypotheekadvies", label: "Hypotheekadvies", hasSubmenu: true },
     { href: "/financieel-advies", label: "Financieel Advies" },
     { href: "/verzekeringsadvies", label: "Verzekeringsadvies" },
     { href: "/over-ons", label: "Over Ons" },
     { href: "/contact", label: "Contact" },
+  ];
+
+  const hypotheekSubLinks = [
+    { href: "/hypotheekadvies/eerste-huis-kopen", label: "Eerste huis kopen" },
+    { href: "/hypotheekadvies/volgend-huis-kopen", label: "Volgend huis kopen" },
+    { href: "/hypotheekadvies/hypotheek-oversluiten", label: "Hypotheek oversluiten" },
+    { href: "/hypotheekadvies/verbouwen", label: "Verbouwen & hypotheek" },
+    { href: "/hypotheekadvies/scheiden", label: "Scheiden & hypotheek" },
+    { href: "/hypotheekadvies/ondernemers", label: "Hypotheek voor ondernemers" },
   ];
 
   return (
@@ -27,14 +37,42 @@ export default function Navigation() {
         {/* Desktop Navigation */}
         <div className="hidden items-center gap-2 md:flex">
           {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} data-testid={`link-nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}>
-              <Button
-                variant={location === link.href ? "secondary" : "ghost"}
-                className="text-sm"
-              >
-                {link.label}
-              </Button>
-            </Link>
+            <div
+              key={link.href}
+              className="relative group"
+              onMouseEnter={() => link.hasSubmenu && setHypotheekSubmenuOpen(true)}
+              onMouseLeave={() => link.hasSubmenu && setHypotheekSubmenuOpen(false)}
+            >
+              <Link href={link.href} data-testid={`link-nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}>
+                <Button
+                  variant={location === link.href ? "secondary" : "ghost"}
+                  className="text-sm flex items-center gap-1"
+                >
+                  {link.label}
+                  {link.hasSubmenu && <ChevronDown className="w-4 h-4" />}
+                </Button>
+              </Link>
+
+              {/* Submenu for Hypotheekadvies */}
+              {link.hasSubmenu && (hypotheekSubmenuOpen) && (
+                <div className="absolute left-0 top-full mt-0 w-56 bg-background border border-input rounded-md shadow-lg z-50 py-2">
+                  {hypotheekSubLinks.map((sublink) => (
+                    <Link
+                      key={sublink.href}
+                      href={sublink.href}
+                      data-testid={`link-nav-submenu-${sublink.label.toLowerCase().replace(/\s+/g, '-')}`}
+                    >
+                      <Button
+                        variant="ghost"
+                        className="w-full justify-start px-4 py-2 h-auto text-sm rounded-none hover:bg-accent/50"
+                      >
+                        {sublink.label}
+                      </Button>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
         </div>
 
@@ -54,19 +92,41 @@ export default function Navigation() {
           <div className="absolute left-0 right-0 top-16 border-b bg-background md:hidden">
             <div className="flex flex-col gap-2 p-4">
               {navLinks.map((link) => (
-                <Link 
-                  key={link.href} 
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  data-testid={`link-mobile-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
-                >
-                  <Button
-                    variant={location === link.href ? "secondary" : "ghost"}
-                    className="w-full justify-start"
+                <div key={link.href} className="flex flex-col">
+                  <Link 
+                    href={link.href}
+                    onClick={() => !link.hasSubmenu && setMobileMenuOpen(false)}
+                    data-testid={`link-mobile-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
                   >
-                    {link.label}
-                  </Button>
-                </Link>
+                    <Button
+                      variant={location === link.href ? "secondary" : "ghost"}
+                      className="w-full justify-start"
+                    >
+                      {link.label}
+                    </Button>
+                  </Link>
+                  
+                  {/* Mobile Submenu for Hypotheekadvies */}
+                  {link.hasSubmenu && (
+                    <div className="ml-4 flex flex-col gap-1 mt-1">
+                      {hypotheekSubLinks.map((sublink) => (
+                        <Link
+                          key={sublink.href}
+                          href={sublink.href}
+                          onClick={() => setMobileMenuOpen(false)}
+                          data-testid={`link-mobile-submenu-${sublink.label.toLowerCase().replace(/\s+/g, '-')}`}
+                        >
+                          <Button
+                            variant="ghost"
+                            className="w-full justify-start text-sm py-1"
+                          >
+                            {sublink.label}
+                          </Button>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
           </div>
