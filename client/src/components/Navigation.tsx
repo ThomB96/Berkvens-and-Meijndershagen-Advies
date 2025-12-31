@@ -7,11 +7,12 @@ export default function Navigation() {
   const [location] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hypotheekSubmenuOpen, setHypotheekSubmenuOpen] = useState(false);
+  const [financieelSubmenuOpen, setFinancieelSubmenuOpen] = useState(false);
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/hypotheekadvies", label: "Hypotheekadvies", hasSubmenu: true },
-    { href: "/financieel-advies", label: "Financieel Advies" },
+    { href: "/hypotheekadvies", label: "Hypotheekadvies", submenuType: "hypotheek" },
+    { href: "/financieel-advies", label: "Financieel Advies", submenuType: "financieel" },
     { href: "/verzekeringsadvies", label: "Verzekeringsadvies" },
     { href: "/over-ons", label: "Over Ons" },
     { href: "/contact", label: "Contact" },
@@ -24,6 +25,15 @@ export default function Navigation() {
     { href: "/hypotheekadvies/verbouwen", label: "Verbouwen & hypotheek" },
     { href: "/hypotheekadvies/scheiden", label: "Scheiden & hypotheek" },
     { href: "/hypotheekadvies/ondernemers", label: "Hypotheek voor ondernemers" },
+  ];
+
+  const financieelSubLinks = [
+    { href: "/financieel-advies/aanvullend-pensioen", label: "Aanvullend pensioen" },
+    { href: "/financieel-advies/eerder-stoppen", label: "Eerder stoppen met werken" },
+    { href: "/financieel-advies/sparen-voor-later", label: "Sparen voor later" },
+    { href: "/financieel-advies/mee-tegenvaller", label: "Mee- of tegenvaller" },
+    { href: "/financieel-advies/wijzigingen-situatie", label: "Wijzigingen in situatie" },
+    { href: "/financieel-advies/overlijden", label: "Overlijden" },
   ];
 
   return (
@@ -40,8 +50,14 @@ export default function Navigation() {
             <div
               key={link.href}
               className="relative group"
-              onMouseEnter={() => link.hasSubmenu && setHypotheekSubmenuOpen(true)}
-              onMouseLeave={() => link.hasSubmenu && setHypotheekSubmenuOpen(false)}
+              onMouseEnter={() => {
+                if (link.submenuType === "hypotheek") setHypotheekSubmenuOpen(true);
+                if (link.submenuType === "financieel") setFinancieelSubmenuOpen(true);
+              }}
+              onMouseLeave={() => {
+                if (link.submenuType === "hypotheek") setHypotheekSubmenuOpen(false);
+                if (link.submenuType === "financieel") setFinancieelSubmenuOpen(false);
+              }}
             >
               <Link href={link.href} data-testid={`link-nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}>
                 <Button
@@ -49,14 +65,34 @@ export default function Navigation() {
                   className="text-sm flex items-center gap-1"
                 >
                   {link.label}
-                  {link.hasSubmenu && <ChevronDown className="w-4 h-4" />}
+                  {link.submenuType && <ChevronDown className="w-4 h-4" />}
                 </Button>
               </Link>
 
               {/* Submenu for Hypotheekadvies */}
-              {link.hasSubmenu && (hypotheekSubmenuOpen) && (
+              {link.submenuType === "hypotheek" && hypotheekSubmenuOpen && (
                 <div className="absolute left-0 top-full mt-0 w-56 bg-background border border-input rounded-md shadow-lg z-50 py-2">
                   {hypotheekSubLinks.map((sublink) => (
+                    <Link
+                      key={sublink.href}
+                      href={sublink.href}
+                      data-testid={`link-nav-submenu-${sublink.label.toLowerCase().replace(/\s+/g, '-')}`}
+                    >
+                      <Button
+                        variant="ghost"
+                        className="w-full justify-start px-4 py-2 h-auto text-sm rounded-none hover:bg-accent/50"
+                      >
+                        {sublink.label}
+                      </Button>
+                    </Link>
+                  ))}
+                </div>
+              )}
+
+              {/* Submenu for Financieel Advies */}
+              {link.submenuType === "financieel" && financieelSubmenuOpen && (
+                <div className="absolute left-0 top-full mt-0 w-56 bg-background border border-input rounded-md shadow-lg z-50 py-2">
+                  {financieelSubLinks.map((sublink) => (
                     <Link
                       key={sublink.href}
                       href={sublink.href}
@@ -95,7 +131,7 @@ export default function Navigation() {
                 <div key={link.href} className="flex flex-col">
                   <Link 
                     href={link.href}
-                    onClick={() => !link.hasSubmenu && setMobileMenuOpen(false)}
+                    onClick={() => !link.submenuType && setMobileMenuOpen(false)}
                     data-testid={`link-mobile-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
                   >
                     <Button
@@ -107,9 +143,30 @@ export default function Navigation() {
                   </Link>
                   
                   {/* Mobile Submenu for Hypotheekadvies */}
-                  {link.hasSubmenu && (
+                  {link.submenuType === "hypotheek" && (
                     <div className="ml-4 flex flex-col gap-1 mt-1">
                       {hypotheekSubLinks.map((sublink) => (
+                        <Link
+                          key={sublink.href}
+                          href={sublink.href}
+                          onClick={() => setMobileMenuOpen(false)}
+                          data-testid={`link-mobile-submenu-${sublink.label.toLowerCase().replace(/\s+/g, '-')}`}
+                        >
+                          <Button
+                            variant="ghost"
+                            className="w-full justify-start text-sm py-1"
+                          >
+                            {sublink.label}
+                          </Button>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Mobile Submenu for Financieel Advies */}
+                  {link.submenuType === "financieel" && (
+                    <div className="ml-4 flex flex-col gap-1 mt-1">
+                      {financieelSubLinks.map((sublink) => (
                         <Link
                           key={sublink.href}
                           href={sublink.href}

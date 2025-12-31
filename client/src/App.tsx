@@ -17,6 +17,12 @@ import HypotheekOversluitenPage from "@/pages/hypotheek-oversluiten";
 import VerbouwenPage from "@/pages/verbouwen-hypotheek";
 import ScheidenPage from "@/pages/scheiden-hypotheek";
 import OndernémersPage from "@/pages/hypotheek-ondernemers";
+import AanvullendPensioenPage from "@/pages/aanvullend-pensioen";
+import EerderStoppenPage from "@/pages/eerder-stoppen";
+import SparenVoorLaterPage from "@/pages/sparen-voor-later";
+import MeeTegenvaller from "@/pages/mee-tegenvaller";
+import WijzigingenSituatiePage from "@/pages/wijzigingen-situatie";
+import OverlijdenAdviesPage from "@/pages/overlijden-advies";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -31,6 +37,12 @@ function Router() {
       <Route path="/hypotheekadvies/scheiden" component={ScheidenPage} />
       <Route path="/hypotheekadvies/ondernemers" component={OndernémersPage} />
       <Route path="/financieel-advies" component={FinancieelAdviesPage} />
+      <Route path="/financieel-advies/aanvullend-pensioen" component={AanvullendPensioenPage} />
+      <Route path="/financieel-advies/eerder-stoppen" component={EerderStoppenPage} />
+      <Route path="/financieel-advies/sparen-voor-later" component={SparenVoorLaterPage} />
+      <Route path="/financieel-advies/mee-tegenvaller" component={MeeTegenvaller} />
+      <Route path="/financieel-advies/wijzigingen-situatie" component={WijzigingenSituatiePage} />
+      <Route path="/financieel-advies/overlijden" component={OverlijdenAdviesPage} />
       <Route path="/verzekeringsadvies" component={VezekeringsadviesPage} />
       <Route path="/over-ons" component={OverOnsPage} />
       <Route path="/contact" component={ContactPage} />
