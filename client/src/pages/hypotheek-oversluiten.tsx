@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, TrendingDown, Calculator, CheckCircle, AlertCircle, Lightbulb, Phone, Users, Euro } from "lucide-react";
 import { useState } from "react";
 
 export default function HypotheekOversluitenPage() {
@@ -12,150 +12,216 @@ export default function HypotheekOversluitenPage() {
       <title>Hypotheek Oversluiten | Lagere Rente & Betere Voorwaarden</title>
       <meta name="description" content="Hypotheek oversluiten? Bespaar op maandlasten met lagere rentes. Wij berekenen uw voordeel en regelen alles. Gratis oversluitcheck!" />
 
-      <section className="bg-primary/5 py-16 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl">
-          <h1 className="text-4xl font-bold mb-4">Hypotheek Oversluiten: Betere Voorwaarden, Lagere Lasten</h1>
-          <p className="text-lg text-muted-foreground">
-            Is uw rentetarief niet meer competitief? Oversluiten kan u honderden euro's per maand besparen. Wij berekenen of het voordelig voor u is.
+      {/* Hero */}
+      <section className="bg-gradient-to-br from-primary/10 via-primary/5 to-background py-16 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl text-center">
+          <div className="inline-flex items-center gap-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <TrendingDown className="w-4 h-4" />
+            Bespaar op uw maandlasten
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            Betaalt U Te Veel Rente?<br />
+            <span className="text-primary">Check het in 5 minuten.</span>
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
+            Rentetarieven veranderen. Wat 5 jaar geleden normaal was, kan nu veel hoger zijn dan nodig. 
+            Oversluiten kan u honderden euro's per maand besparen.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/contact">
+              <Button size="lg" className="text-lg px-8" data-testid="button-cta-hero">
+                <Calculator className="w-5 h-5 mr-2" />
+                Gratis Oversluitcheck
+              </Button>
+            </Link>
+          </div>
+          <p className="text-sm text-muted-foreground mt-4">
+            Binnen een week weet u of oversluiten voor u interessant is.
           </p>
         </div>
       </section>
 
+      {/* Rekenvoorbeeld */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-accent/5">
+        <div className="mx-auto max-w-4xl">
+          <Card className="border-2 border-green-200 dark:border-green-800">
+            <CardContent className="pt-6">
+              <div className="flex items-center gap-3 mb-6">
+                <Euro className="w-6 h-6 text-green-600" />
+                <h3 className="font-semibold text-lg">Voorbeeld: wat levert oversluiten op?</h3>
+              </div>
+              <div className="grid sm:grid-cols-4 gap-4 text-center">
+                <div className="bg-background rounded-lg p-4">
+                  <p className="text-sm text-muted-foreground mb-1">Hypotheek</p>
+                  <p className="text-xl font-bold">€ 280.000</p>
+                </div>
+                <div className="bg-background rounded-lg p-4">
+                  <p className="text-sm text-muted-foreground mb-1">Huidige rente</p>
+                  <p className="text-xl font-bold text-red-500">4,8%</p>
+                </div>
+                <div className="bg-background rounded-lg p-4">
+                  <p className="text-sm text-muted-foreground mb-1">Nieuwe rente</p>
+                  <p className="text-xl font-bold text-green-600">3,6%</p>
+                </div>
+                <div className="bg-background rounded-lg p-4 ring-2 ring-green-500">
+                  <p className="text-sm text-muted-foreground mb-1">Besparing /maand</p>
+                  <p className="text-xl font-bold text-green-600">€ 280</p>
+                </div>
+              </div>
+              <p className="text-sm text-muted-foreground mt-4 text-center">
+                *Dit is een voorbeeld. Uw werkelijke besparing hangt af van uw situatie en eventuele boeterente.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Main Content */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl space-y-12">
+        <div className="mx-auto max-w-4xl space-y-16">
           
-          <div className="prose max-w-none">
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Rentes bewegen mee met de markt. Wat enkele jaren geleden normaal was, kan nu veel hoger zijn dan wat nieuwe klanten krijgen. Oversluiten betekent dat u een nieuwe hypotheek bij een ander bedrijf afsluit en zo de oude beëindigt. Dit kan aanzienlijke voordelen opleveren, maar vraagt wel voorbereiding.
+          <div className="space-y-4">
+            <h2 className="text-3xl font-bold">Wat Is Hypotheek Oversluiten?</h2>
+            <p className="text-lg text-muted-foreground">
+              Bij oversluiten neemt u een nieuwe hypotheek bij een andere bank en lost u de oude af. 
+              Het doel? Lagere rente, betere voorwaarden, of allebei.
+            </p>
+            <p className="text-lg text-muted-foreground">
+              Uw huis blijft hetzelfde, alleen uw hypotheekverstrekker verandert. 
+              Het klinkt ingewikkeld, maar wij regelen alles voor u.
             </p>
           </div>
 
-          <div>
-            <h2 className="text-3xl font-bold mb-6">Wat Is Hypotheek Oversluiten?</h2>
-            <div className="space-y-4 text-muted-foreground">
-              <p>
-                Oversluiten betekent dat u uw huisje als onderpand blijft houden, maar uw hypotheekcontract verschuift van de ene naar de andere bank. De nieuwe bank betaalt het restantbedrag van de oude af, en u krijgt een nieuwe hypotheekovereenkomst met hopelijk betere voorwaarden.
-              </p>
-              <Card>
-                <CardContent className="pt-6">
-                  <h3 className="font-semibold text-foreground mb-4">Procces in Stappen:</h3>
-                  <ol className="space-y-3 list-decimal list-inside text-sm space-y-2">
-                    <li>U vraagt een offerte aan bij een nieuwe bank</li>
-                    <li>Nieuwe bank beoordeelt uw situatie en maakt een offerte</li>
-                    <li>U kiest de beste offerte</li>
-                    <li>Nieuwe bank regelt alles, inclusief betaling van de oude bank</li>
-                    <li>Notaris verwerkt de overdracht van onderpand</li>
-                    <li>U betaalt maandlasten aan de nieuwe bank</li>
-                  </ol>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-
+          {/* Wanneer interessant */}
           <div>
             <h2 className="text-3xl font-bold mb-6">Wanneer Is Oversluiten Interessant?</h2>
-            <div className="space-y-4 text-muted-foreground">
-              <p>
-                Niet altijd is oversluiten voordelig. Dit hangt af van verschillende factoren:
-              </p>
-              
-              <div className="space-y-3">
-                <Card>
+            
+            <div className="grid sm:grid-cols-2 gap-4">
+              {[
+                { icon: TrendingDown, title: "Rente is gedaald", desc: "Als nieuwe klanten flink lagere rentes krijgen dan u betaalt" },
+                { icon: Calculator, title: "Rentevaste periode loopt af", desc: "Perfect moment om te vergelijken met andere aanbieders" },
+                { icon: CheckCircle, title: "Meer flexibiliteit nodig", desc: "Ruimere aflossingsmogelijkheden of andere voorwaarden" },
+                { icon: Euro, title: "Lagere maandlasten gewenst", desc: "Meer ruimte in uw budget voor andere zaken" }
+              ].map((item, idx) => (
+                <Card key={idx} className="hover-elevate">
                   <CardContent className="pt-6">
-                    <h3 className="font-semibold text-foreground mb-2">Rente is Flink Gedaald</h3>
-                    <p className="text-sm">
-                      Als u nu 5% betaalt en nieuwe klanten 3% krijgen, loont het vaak. Elke 1% rente verschil betekent honderden euro's besparing per jaar.
-                    </p>
+                    <item.icon className="w-8 h-8 text-primary mb-3" />
+                    <h3 className="font-semibold mb-2">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground">{item.desc}</p>
                   </CardContent>
                 </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-semibold text-foreground mb-2">Rentevaste Periode is Bijna Voorbij</h3>
-                    <p className="text-sm">
-                      Komt uw vastgestelde rente soon af? Dan is het moment om te vergelijken. Nu oversluiten kan beter zijn dan wachten tot die datum.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-semibold text-foreground mb-2">U Wilt Betere Voorwaarden</h3>
-                    <p className="text-sm">
-                      Niet alleen rente telt. Vaak kunnen extra aflossingen zonder straf, flexibeler aflossingsverhoudingen, etc. waarde toevoegen.
-                    </p>
-                  </CardContent>
-                </Card>
-              </div>
+              ))}
             </div>
           </div>
 
+          {/* CTA halverwege */}
+          <Card className="bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800">
+            <CardContent className="pt-6 text-center">
+              <Lightbulb className="w-10 h-10 text-green-600 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Benieuwd of oversluiten voor u loont?</h3>
+              <p className="text-muted-foreground mb-4 max-w-md mx-auto">
+                Wij maken gratis een berekening. Binnen een week weet u of en hoeveel u kunt besparen.
+              </p>
+              <Link href="/contact">
+                <Button className="bg-green-600 hover:bg-green-700" data-testid="button-cta-middle">
+                  Vraag Oversluitcheck Aan
+                </Button>
+              </Link>
+            </CardContent>
+          </Card>
+
+          {/* Kosten uitgelegd */}
           <div>
             <h2 className="text-3xl font-bold mb-6">Kosten en Boeterente Uitgelegd</h2>
-            <div className="space-y-4 text-muted-foreground">
-              <p>
-                Voorzichtig: oversluiten kost geld. U betaalt boeterente en administratiekosten. Deze moeten minstens opwegen tegen de besparing.
-              </p>
-              
+            <p className="text-muted-foreground mb-6">
+              Eerlijk is eerlijk: oversluiten kost ook geld. De vraag is of de besparing opweegt tegen de kosten. 
+              Wij rekenen dit voor u uit.
+            </p>
+
+            <div className="space-y-4">
               <Card>
-                <CardContent className="pt-6 space-y-4">
-                  <div>
-                    <h3 className="font-semibold text-foreground mb-2">Boeterente</h3>
-                    <p className="text-sm">
-                      Als u voortijdig afsluit, betaalt u boeterente. Dit is het verschil tussen het huidige rentetarief en wat u nog zou betalen. Voor grote bedragen kan dit veel zijn.
-                    </p>
-                    <p className="text-sm mt-2">
-                      <span className="font-semibold">Voorbeeld:</span> U hebt €200.000 open op 5% rente. Huisbanken bieden nu 3% voor dezelfde periode. Boeterente kan dan rond de €5.000 zijn.
-                    </p>
+                <CardContent className="pt-6">
+                  <div className="flex gap-4">
+                    <AlertCircle className="w-6 h-6 text-amber-500 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold mb-2">Boeterente</h3>
+                      <p className="text-muted-foreground text-sm">
+                        Als u voortijdig uw hypotheek beëindigt, betaalt u vaak boeterente. 
+                        Dit is het renteverschil over de resterende rentevaste periode. 
+                        Bij grote bedragen kan dit oplopen, maar vaak weegt de besparing hier tegenop.
+                      </p>
+                    </div>
                   </div>
+                </CardContent>
+              </Card>
 
-                  <div className="border-t pt-4">
-                    <h3 className="font-semibold text-foreground mb-2">Oversluitkosten</h3>
-                    <p className="text-sm">
-                      Notaris, taxatie, administratie: dit loopt op tot €1.500-€3.000 afhankelijk van uw situatie.
-                    </p>
+              <Card>
+                <CardContent className="pt-6">
+                  <div className="flex gap-4">
+                    <Calculator className="w-6 h-6 text-primary flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold mb-2">Oversluitkosten</h3>
+                      <p className="text-muted-foreground text-sm">
+                        Notaris, taxatie en advieskosten komen er ook bij. 
+                        Reken op €2.000 tot €4.000 totaal. Sommige banken bieden vergoedingen aan.
+                      </p>
+                    </div>
                   </div>
+                </CardContent>
+              </Card>
 
-                  <div className="border-t pt-4">
-                    <h3 className="font-semibold text-foreground mb-2">Breakeven Berekening</h3>
-                    <p className="text-sm">
-                      We berekenen: hoeveel maanden moet u het nieuwe tarief betalen om de kosten terug te verdienen? Als u langer dan 5-6 jaar blijft wonen, loont het meestal.
-                    </p>
+              <Card className="bg-primary/5 border-primary/20">
+                <CardContent className="pt-6">
+                  <div className="flex gap-4">
+                    <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold mb-2">Onze berekening</h3>
+                      <p className="text-muted-foreground text-sm">
+                        Wij berekenen de terugverdientijd: na hoeveel maanden hebt u de kosten terugverdiend? 
+                        Als u nog 10+ jaar in uw huis blijft wonen, loont oversluiten vaak.
+                      </p>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
             </div>
           </div>
 
+          {/* FAQ */}
           <div>
             <h2 className="text-3xl font-bold mb-6">Veelgestelde Vragen</h2>
             <div className="space-y-3">
               {[
                 {
-                  q: "Hoe lang duurt oversluiten?",
-                  a: "Typically 4-6 weken van aanvraag tot afronding. Wij regelen alles, u hoeft niet veel te doen behalve documenten ondertekenen."
+                  q: "Hoe lang duurt het oversluiten?",
+                  a: "Meestal 4-6 weken van aanvraag tot afronding. Wij regelen alles, u hoeft alleen documenten te ondertekenen."
                 },
                 {
-                  q: "Kan ik oversluiten als mijn huis in waarde is gedaald?",
-                  a: "Ja, maar mogelijk met beperking. Veel banken accepteren dit zonder probleem. In extreme gevallen kan het lastig zijn. Wij checken dit vooraf."
+                  q: "Kan ik oversluiten als mijn huis minder waard is geworden?",
+                  a: "Soms wel, maar dit hangt af van de verhouding tussen uw hypotheek en de huiswaarde. Wij beoordelen dit vooraf."
                 },
                 {
-                  q: "Wat als de bank weigert?",
-                  a: "Zelden, als uw financiën op orde zijn. Zeker niet met jouw huiswaarde als veiligheid. We maken een voorstudie om dit uit te sluiten."
+                  q: "Moet ik opnieuw al die papieren aanleveren?",
+                  a: "Ja, de nieuwe bank doet een volledige beoordeling. Maar wij helpen u alles te verzamelen en controleren of het compleet is."
                 },
                 {
-                  q: "Moet ik mijn hele schuld afbetalen?",
-                  a: "Nee, u hoeft niet minder schuld te hebben. Oversluiten is louter wissel-van-hypotheekprovider. Uw schuld verandert niet, alleen uw rentetarief."
+                  q: "Wat als ik net mijn rentevaste periode heb verlengd?",
+                  a: "Dan kan de boeterente hoog uitvallen. Toch kan oversluiten nog steeds interessant zijn. Wij maken de som."
                 }
               ].map((item, idx) => (
-                <Card key={idx} className="cursor-pointer hover-elevate" onClick={() => setExpandedFaq(expandedFaq === idx ? null : idx)}>
+                <Card 
+                  key={idx} 
+                  className="cursor-pointer hover-elevate" 
+                  onClick={() => setExpandedFaq(expandedFaq === idx ? null : idx)}
+                >
                   <CardContent className="pt-6">
                     <div className="flex items-start justify-between gap-4">
                       <h3 className="font-semibold">{item.q}</h3>
-                      <ChevronDown className={`w-5 h-5 transition-transform flex-shrink-0 ${expandedFaq === idx ? 'rotate-180' : ''}`} />
+                      <ChevronDown className={`w-5 h-5 transition-transform flex-shrink-0 text-muted-foreground ${expandedFaq === idx ? 'rotate-180' : ''}`} />
                     </div>
                     {expandedFaq === idx && (
-                      <p className="mt-4 text-sm text-muted-foreground">{item.a}</p>
+                      <p className="mt-4 text-muted-foreground">{item.a}</p>
                     )}
                   </CardContent>
                 </Card>
@@ -163,17 +229,24 @@ export default function HypotheekOversluitenPage() {
             </div>
           </div>
 
-          <div className="bg-primary/5 p-8 rounded-lg border border-primary/20 text-center space-y-4">
-            <h2 className="text-2xl font-bold">Benieuwd naar Uw Voordeel?</h2>
-            <p className="text-muted-foreground">
-              Vraag onze gratis oversluitcheck aan. Wij berekenen exact hoeveel u kunt besparen zonder verplichtingen.
+          {/* CTA-blok eindpagina */}
+          <div className="bg-primary text-primary-foreground rounded-xl p-8 md:p-12 text-center">
+            <h2 className="text-3xl font-bold mb-4">Ontdek Uw Besparing</h2>
+            <p className="text-lg text-primary-foreground/90 mb-6 max-w-xl mx-auto">
+              Vraag een gratis oversluitcheck aan. Wij berekenen exact hoeveel u kunt besparen 
+              en of de kosten opwegen tegen de voordelen.
             </p>
             <Link href="/contact">
-              <Button size="lg" data-testid="button-cta-oversluiten">
-                Vraag Oversluitcheck
+              <Button size="lg" variant="secondary" className="text-lg px-8" data-testid="button-cta-bottom">
+                <Phone className="w-5 h-5 mr-2" />
+                Vraag Oversluitcheck Aan
               </Button>
             </Link>
+            <p className="text-sm text-primary-foreground/70 mt-4">
+              Vrijblijvend. U beslist zelf of u wilt oversluiten.
+            </p>
           </div>
+
         </div>
       </section>
     </div>

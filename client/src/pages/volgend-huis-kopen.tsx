@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Home, TrendingUp, ArrowRightLeft, CheckCircle, AlertCircle, Lightbulb, Phone, Users, PiggyBank } from "lucide-react";
 import { useState } from "react";
 
 export default function VolgendHuisKopenPage() {
@@ -12,132 +12,218 @@ export default function VolgendHuisKopenPage() {
       <title>Volgend Huis Kopen | Hypotheekadvies Voor Doorstromers</title>
       <meta name="description" content="Doorstromen naar een groter huis? Ontdek uw mogelijkheden met overwaarde, meeneemhypotheek en financieringsopties. Deskundig advies voor doorstromers." />
 
-      <section className="bg-primary/5 py-16 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl">
-          <h1 className="text-4xl font-bold mb-4">Volgend Huis Kopen: Slimmer Financieren bij Doorstromen</h1>
-          <p className="text-lg text-muted-foreground">
-            Uw gezin groeit of u wilt een groter huis. Wij begeleiden u door het doorstroomproces en zorgen dat u optimaal van uw huidige situatie gebruikmaakt.
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-primary/10 via-primary/5 to-background py-16 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl text-center">
+          <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <TrendingUp className="w-4 h-4" />
+            Voor doorstromers
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            Klaar voor de Volgende Stap?<br />
+            <span className="text-primary">Uw overwaarde werkt voor u.</span>
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
+            Uw gezin groeit, of u wilt gewoon meer ruimte. Goed nieuws: als doorstromer hebt u vaak flinke voordelen. Wij laten zien wat mogelijk is.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/contact">
+              <Button size="lg" className="text-lg px-8" data-testid="button-cta-hero">
+                <Phone className="w-5 h-5 mr-2" />
+                Bereken Mijn Mogelijkheden
+              </Button>
+            </Link>
+          </div>
+          <p className="text-sm text-muted-foreground mt-4">
+            Vrijblijvend en gratis. Wij rekenen voor wat er mogelijk is.
           </p>
         </div>
       </section>
 
+      {/* Highlightblok */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-accent/5">
+        <div className="mx-auto max-w-4xl">
+          <Card className="border-l-4 border-l-primary">
+            <CardContent className="pt-6">
+              <div className="flex gap-4">
+                <Lightbulb className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="font-semibold text-lg mb-2">Wist u dit?</h3>
+                  <p className="text-muted-foreground">
+                    Veel doorstromers onderschatten hun mogelijkheden. Door gestegen huizenprijzen hebt u 
+                    vaak meer overwaarde dan u denkt. Dit geeft u een sterke positie op de woningmarkt.
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Main Content */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl space-y-12">
+        <div className="mx-auto max-w-4xl space-y-16">
           
-          <div className="prose max-w-none">
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Doorstromen naar uw volgende huis brengt nieuwe mogelijkheden met zich mee. Uw huiswaarde is gestegen, u hebt misschien spaargeld opgebouwd, en u kent nu het hypotheekproces. Dit geeft u voordelen! Toch zijn er ook complexe keuzes: overwaarde, meeneemhypotheek, timing van verkoop en aankoop. Wij helpen u alle opties helder in kaart brengen.
+          <div className="space-y-4">
+            <h2 className="text-3xl font-bold">Wat Betekent Doorstromen?</h2>
+            <p className="text-lg text-muted-foreground">
+              Doorstromen betekent dat u uw huidige woning verkoopt en een nieuwe koopt. 
+              Klinkt simpel, maar de timing en financiering vragen om goede planning.
+            </p>
+            <p className="text-lg text-muted-foreground">
+              Het goede nieuws? U hebt ervaring. En waarschijnlijk overwaarde. 
+              Daarmee staat u sterker dan toen u uw eerste huis kocht.
             </p>
           </div>
 
+          {/* Overwaarde uitleg met voorbeeld */}
           <div>
-            <h2 className="text-3xl font-bold mb-6">Wat Betekent Doorstromen?</h2>
-            <div className="space-y-4 text-muted-foreground">
-              <p>
-                Doorstromen betekent dat u uw huisje verkoopt en een nieuw huis koopt. Dit klinkt simpel, maar er zit veel voorbereiding achter. Cruciaal is de timing: verkoop en aankoop moeten goed op elkaar aansluiten.
+            <h2 className="text-3xl font-bold mb-6">Wat Kunt U Doen Met Overwaarde?</h2>
+            
+            <Card className="bg-primary/5 border-primary/20 mb-6">
+              <CardContent className="pt-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <PiggyBank className="w-6 h-6 text-primary" />
+                  <h3 className="font-semibold text-lg">Rekenvoorbeeld</h3>
+                </div>
+                <div className="grid sm:grid-cols-3 gap-4 text-center">
+                  <div className="bg-background rounded-lg p-4">
+                    <p className="text-sm text-muted-foreground mb-1">Verkoopprijs huis</p>
+                    <p className="text-2xl font-bold text-primary">€ 380.000</p>
+                  </div>
+                  <div className="bg-background rounded-lg p-4">
+                    <p className="text-sm text-muted-foreground mb-1">Restant hypotheek</p>
+                    <p className="text-2xl font-bold">€ 220.000</p>
+                  </div>
+                  <div className="bg-background rounded-lg p-4">
+                    <p className="text-sm text-muted-foreground mb-1">Uw overwaarde</p>
+                    <p className="text-2xl font-bold text-green-600">€ 160.000</p>
+                  </div>
+                </div>
+                <p className="text-sm text-muted-foreground mt-4 text-center">
+                  *Minus verkoopkosten (circa €10.000). Dit bedrag kunt u inzetten voor uw nieuwe woning.
+                </p>
+              </CardContent>
+            </Card>
+
+            <div className="grid sm:grid-cols-2 gap-4">
+              {[
+                { title: "Lagere hypotheek", desc: "Meer eigen geld inbrengen = lagere maandlasten" },
+                { title: "Beter rentetarief", desc: "Hoe meer eigen inbreng, hoe scherper de rente" },
+                { title: "Ruimte voor verbouwing", desc: "Uw droomkeuken of uitbouw meefinancieren" },
+                { title: "Buffer behouden", desc: "Verstandig om niet alles in te zetten" }
+              ].map((item, idx) => (
+                <Card key={idx}>
+                  <CardContent className="pt-6">
+                    <div className="flex gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <h3 className="font-semibold mb-1">{item.title}</h3>
+                        <p className="text-sm text-muted-foreground">{item.desc}</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA halverwege */}
+          <Card className="bg-primary/5 border-primary/20">
+            <CardContent className="pt-6 text-center">
+              <Users className="w-10 h-10 text-primary mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Benieuwd naar uw overwaarde?</h3>
+              <p className="text-muted-foreground mb-4 max-w-md mx-auto">
+                Wij berekenen gratis wat uw woning nu waard is en hoeveel overwaarde u heeft opgebouwd.
               </p>
-              <Card>
+              <Link href="/contact">
+                <Button data-testid="button-cta-middle">
+                  Bereken Mijn Overwaarde
+                </Button>
+              </Link>
+            </CardContent>
+          </Card>
+
+          {/* Meenemen vs Oversluiten */}
+          <div>
+            <h2 className="text-3xl font-bold mb-6">Hypotheek Meenemen of Nieuw Afsluiten?</h2>
+            <p className="text-muted-foreground mb-6">
+              Dit is een belangrijke keuze. Beide opties hebben voor- en nadelen. Wij rekenen uit wat voor u het beste is.
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <Card className="border-t-4 border-t-primary">
                 <CardContent className="pt-6">
-                  <h3 className="font-semibold text-foreground mb-4">Twee Scenario's:</h3>
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-semibold mb-2">1. Eerst Verkopen, Dan Kopen</h4>
-                      <p className="text-sm">Voordeel: U weet precies hoeveel geld u heeft voor het nieuwe huis. Nadeel: U bent even zonder huis, of u moet ergens tussen blijven.</p>
-                    </div>
-                    <div className="border-t pt-4">
-                      <h4 className="font-semibold mb-2">2. Eerst Kopen, Dan Verkopen</h4>
-                      <p className="text-sm">Voordeel: U hebt meer tijd om rustig de perfecte woning te zoeken. Nadeel: U draagt twee maanden huren/aflossingen.</p>
-                    </div>
+                  <div className="flex items-center gap-2 mb-4">
+                    <ArrowRightLeft className="w-5 h-5 text-primary" />
+                    <h3 className="font-semibold text-lg">Hypotheek meenemen</h3>
                   </div>
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" /> Uw huidige rente blijft behouden</li>
+                    <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" /> Geen boeterente</li>
+                    <li className="flex gap-2"><AlertCircle className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" /> Minder keuze in voorwaarden</li>
+                    <li className="flex gap-2"><AlertCircle className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" /> Aanvullen bij zelfde bank</li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card className="border-t-4 border-t-accent">
+                <CardContent className="pt-6">
+                  <div className="flex items-center gap-2 mb-4">
+                    <TrendingUp className="w-5 h-5 text-accent" />
+                    <h3 className="font-semibold text-lg">Nieuwe hypotheek</h3>
+                  </div>
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" /> Mogelijk lagere rente</li>
+                    <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" /> Volledige keuzevrijheid</li>
+                    <li className="flex gap-2"><AlertCircle className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" /> Mogelijk boeterente</li>
+                    <li className="flex gap-2"><AlertCircle className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" /> Nieuwe kosten adviseur/notaris</li>
+                  </ul>
                 </CardContent>
               </Card>
             </div>
+
+            <p className="text-center text-muted-foreground mt-6">
+              <span className="font-medium text-foreground">Tip:</span> Wij maken voor u een doorrekening van beide scenario's, 
+              zodat u een weloverwogen keuze kunt maken.
+            </p>
           </div>
 
-          <div>
-            <h2 className="text-3xl font-bold mb-6">Wat Kun Je Doen met Overwaarde?</h2>
-            <div className="space-y-4 text-muted-foreground">
-              <p>
-                Overwaarde is het verschil tussen de verkoopprijs van uw huis en het restantbedrag van uw hypotheek. Dit is veelal uw grootste voordeel bij doorstromen!
-              </p>
-              <div className="bg-primary/5 p-6 rounded-lg">
-                <h3 className="font-semibold text-foreground mb-3">Voorbeeld:</h3>
-                <ul className="space-y-2 text-sm">
-                  <li><span className="font-semibold">Verkoopprijs huisje:</span> €350.000</li>
-                  <li><span className="font-semibold">Restant hypotheek:</span> €200.000</li>
-                  <li><span className="font-semibold">Overwaarde:</span> €150.000 (minus verkoopkosten)</li>
-                </ul>
-              </div>
-              <p className="pt-4">
-                Deze overwaarde kunt u gebruiken voor:
-              </p>
-              <ul className="space-y-2 list-disc list-inside">
-                <li>Eigen vermogen voor de nieuwe woning (scherper rentetarief)</li>
-                <li>Volledig aflossen van de oude hypotheek</li>
-                <li>Inventaris en verbouwingen in het nieuwe huis</li>
-                <li>Spaarreserve opbouwen</li>
-              </ul>
-            </div>
-          </div>
-
-          <div>
-            <h2 className="text-3xl font-bold mb-6">Hypotheek Meenemen of Oversluiten?</h2>
-            <div className="space-y-4 text-muted-foreground">
-              <p>
-                U hebt rechten op uw huisje, waaronder het recht om uw hypotheek mee te nemen bij doorstroming. Maar is dit altijd het beste? Laten we beide opties vergelijken.
-              </p>
-              <Card>
-                <CardContent className="pt-6 space-y-6">
-                  <div>
-                    <h3 className="font-semibold text-foreground mb-3">Hypotheek Meenemen (Subrogatie)</h3>
-                    <p className="text-sm mb-3">U brengt de oude hypotheek mee naar de nieuwe woning.</p>
-                    <p className="text-sm"><span className="font-semibold">Voordeel:</span> Meestal geen extra kosten. Het rente percentage blijft gelijk.</p>
-                    <p className="text-sm"><span className="font-semibold">Nadeel:</span> U heeft minder keus. Misschien zijn betere tarieven beschikbaar.</p>
-                  </div>
-                  
-                  <div className="border-t pt-6">
-                    <h3 className="font-semibold text-foreground mb-3">Oversluiten naar Nieuw Tarief</h3>
-                    <p className="text-sm mb-3">U beëindigt de oude en neemt een nieuwe hypotheek.</p>
-                    <p className="text-sm"><span className="font-semibold">Voordeel:</span> U kunt van lagere rentes profiteren. U hebt volledige keus.</p>
-                    <p className="text-sm"><span className="font-semibold">Nadeel:</span> Boeterente op de oude hypotheek mogelijk. Administratiekosten.</p>
-                  </div>
-                </CardContent>
-              </Card>
-              <p className="pt-4">
-                Wij berekenen wat voor u het financieel voordeligst is. Soms is meenemen beter, soms oversluiten.
-              </p>
-            </div>
-          </div>
-
+          {/* FAQ */}
           <div>
             <h2 className="text-3xl font-bold mb-6">Veelgestelde Vragen</h2>
             <div className="space-y-3">
               {[
                 {
-                  q: "Hoeveel moet ik aftrekken voor verkoopkosten?",
-                  a: "Ongeveer 2-3% van de verkoopprijs gaat naar makelaarsprovisie, overdrachtsbelasting en notariskosten. Dit moet u meepakken in uw berekening."
+                  q: "Wat als ik eerst moet kopen voordat ik verkoop?",
+                  a: "Dit komt veel voor. Er zijn oplossingen zoals een overbruggingskrediet of een langere financieringsvoorbehoud. Wij bespreken de opties en risico's met u."
                 },
                 {
-                  q: "Kan ik tijdens het doorstromen beide huizen bezitten?",
-                  a: "Ja, maar beide huizen tel je mee bij je schuldenlast. De bank zal hier kritisch naar kijken. Probeer de timing zo goed mogelijk af te stemmen."
+                  q: "Hoeveel overwaarde moet ik inbrengen?",
+                  a: "Dat bepaalt u zelf. Meer inbrengen betekent lagere maandlasten, maar het kan verstandig zijn om een buffer te behouden. Wij adviseren over de optimale verdeling."
                 },
                 {
-                  q: "Wat als mijn nieuwe huis minder waard is?",
-                  a: "Dan kunt u de overwaarde gebruiken om toch nog een degelijke hypotheek af te sluiten. Soms is het beter om kleiner of goedkoper te kopen en spaargeld op te bouwen."
+                  q: "Kan ik dubbele lasten dragen als de verkoop vertraagt?",
+                  a: "Dit is een reëel risico. De bank beoordeelt of u tijdelijk twee hypotheken kunt dragen. Wij helpen u dit vooraf goed in te schatten."
                 },
                 {
-                  q: "Hoe snel kan het doorstroomproces gaan?",
-                  a: "Idealiter 6-8 weken als alles soepel loopt. Met twee transacties kan het wat langer duren. Wij regelen de timing."
+                  q: "Hoe lang duurt het doorstroomproces?",
+                  a: "Gemiddeld 3-4 maanden, afhankelijk van de woningmarkt en hoe snel u een koper en nieuwe woning vindt. Wij begeleiden u door elke stap."
                 }
               ].map((item, idx) => (
-                <Card key={idx} className="cursor-pointer hover-elevate" onClick={() => setExpandedFaq(expandedFaq === idx ? null : idx)}>
+                <Card 
+                  key={idx} 
+                  className="cursor-pointer hover-elevate" 
+                  onClick={() => setExpandedFaq(expandedFaq === idx ? null : idx)}
+                >
                   <CardContent className="pt-6">
                     <div className="flex items-start justify-between gap-4">
                       <h3 className="font-semibold">{item.q}</h3>
-                      <ChevronDown className={`w-5 h-5 transition-transform flex-shrink-0 ${expandedFaq === idx ? 'rotate-180' : ''}`} />
+                      <ChevronDown className={`w-5 h-5 transition-transform flex-shrink-0 text-muted-foreground ${expandedFaq === idx ? 'rotate-180' : ''}`} />
                     </div>
                     {expandedFaq === idx && (
-                      <p className="mt-4 text-sm text-muted-foreground">{item.a}</p>
+                      <p className="mt-4 text-muted-foreground">{item.a}</p>
                     )}
                   </CardContent>
                 </Card>
@@ -145,17 +231,21 @@ export default function VolgendHuisKopenPage() {
             </div>
           </div>
 
-          <div className="bg-primary/5 p-8 rounded-lg border border-primary/20 text-center space-y-4">
-            <h2 className="text-2xl font-bold">Klaar Voor Het Volgende Avontuur?</h2>
-            <p className="text-muted-foreground">
-              Laat ons u helpen met een persoonlijk doorstroomplan. Wij zorgen dat u optimaal van uw overwaarde gebruikmaakt.
+          {/* CTA-blok eindpagina */}
+          <div className="bg-primary text-primary-foreground rounded-xl p-8 md:p-12 text-center">
+            <h2 className="text-3xl font-bold mb-4">Klaar Voor Het Volgende Avontuur?</h2>
+            <p className="text-lg text-primary-foreground/90 mb-6 max-w-xl mx-auto">
+              Laat ons berekenen wat u kunt lenen en hoe u optimaal gebruik maakt van uw overwaarde. 
+              Vrijblijvend en persoonlijk.
             </p>
             <Link href="/contact">
-              <Button size="lg" data-testid="button-cta-volgend-huis">
-                Vraag Advies
+              <Button size="lg" variant="secondary" className="text-lg px-8" data-testid="button-cta-bottom">
+                <Phone className="w-5 h-5 mr-2" />
+                Plan een Adviesgesprek
               </Button>
             </Link>
           </div>
+
         </div>
       </section>
     </div>
