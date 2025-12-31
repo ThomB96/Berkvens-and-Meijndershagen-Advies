@@ -18,7 +18,7 @@ export default defineConfig({
   root: path.resolve(__dirname, "client"),
   build: {
     // We veranderen dit naar 'dist' zodat GitHub Pages het makkelijk vindt
-    outDir: path.resolve(__dirname, "../dist"),
+    outDir: "dist",
     emptyOutDir: true,
   },
 });
